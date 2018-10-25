@@ -51,7 +51,7 @@ Col|Name|description
 :-:|:---|:---------
 1|SampleID|Sample ID
 2|Index|Sample Index 
-3|BarcodeGroup|Specified barcode group IDs used in the sample, detailed barcode sequence is listed in file ./config/barcode.txt
+3|BarcodeGroup|Specified barcode group IDs used in the sample, detailed barcode sequence is listed in barcode config file
 4|SampleType|Sample type, include gravida-plasma-thalassemia and standards-thalassemia and other. It will infer fetal DNA fraction and genotype for fetal and maternal allele if choose gravida-plasma-thalassemia, and only genotype based on supplied fetal DNA fraction if choose standards-thalassemia, and neither infer fetal fetal DNA fraction nor genotype but only detect mutations when choose other.
 5|Description|Sample description
 6-8|Genotype|Fetal maternal and paternal genotype, optional, it will judge True or False when supplied. N represent negative, N/N, xx/N, xx/xx represent three heterozygosis state
