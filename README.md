@@ -1,7 +1,8 @@
 ## Getting started
 
 	https://github.com/Genetalks/cfBEST-pipeline.git 
-	perl cfBEST_pipeline.pl -ss demo.config –pc panel.config -bc barcode.config -ref hg19.fasta -id pID -indir dir/ -outdir outdir/ 	-threads 10 -min_depth 4
+	perl cfBEST_pipeline.pl -ss demo.config –pc panel.config -bc barcode.config -ref hg19.fasta -id pID -indir dir/ 
+	-outdir outdir/ -threads 10 -min_depth 4
 
 
 ## Introduction
