@@ -49,7 +49,7 @@ GetOptions(
 				"mdepth_snp:s"=>\$min_depth_snp,
 				"msize:i"=>\$max_size,
 				) or &USAGE;
-&USAGE unless ($fsample_sheet and $indir);
+&USAGE unless ($fsample_sheet and $indir and $configID);
 $outdir||="./";
 `mkdir $outdir`	unless (-d $outdir);
 $outdir=AbsolutePath("dir",$outdir);
@@ -279,17 +279,17 @@ Contact:zeng huaping<huaping.zeng\@genetalks.com>
 
 Usage:
   Options:
-  -ss       <file>    Input sample sheet file, forced
+  -ss       <file>    Input sample sheet file, requried
+  -id       <str>     config ID in panel config file needed, requried
+  -indir    <dir>     rawdata dir, "Undetermined_*_001.fastq.gz", or "L1/*.R1.fastq.gz", requried
   -pc       <file>    Input panel config file, [$fpanel]
   -bc       <file>    Input barcode config file, [$fbarcode]
   -ref      <file>    Input ref genome file, [$ref]
-  -id       <str>     config ID in panel config file needed when no configID in data_sheet file, optional
-  -indir    <dir>     rawdata dir, "Undetermined_*_001.fastq.gz", or "L1/*.R1.fastq.gz"
-  -outdir   <dir>     outdir of output file, default ./
-  --SingleEnd         SingleEnd, read2 as second barcode, optinal
-  --Double_Barcode    Double barcode, optinal
-  --Abnormal_Recognize   abnormal sample recognize
+  -outdir   <dir>     outdir of output file, [./]
 
+  --SingleEnd         SingleEnd, read2 as second barcode, optional
+  --Double_Barcode    Double barcode, optional
+  --Abnormal_Recognize   abnormal sample recognize, optional
   -min_depth     <int>    min group depth, [4]
   -min_CV        <float>  min CV, [0.65]
   -mdepth_snp    <int>	  min depth of snp to infer cffDNA, [$min_depth_snp]
