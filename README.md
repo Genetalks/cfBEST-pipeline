@@ -51,7 +51,7 @@
         					7: merge statistic and abnormal sample recognize
   	-h         			Help
 
-#### Format of data sheet file: 
+#### Format of data sheet file (-ss flag): 
 
 Col|Name|description
 :-:|:---|:---------
@@ -65,7 +65,7 @@ Col|Name|description
 	Example:
 	S1    CTTCGTT B6,B7,B8        gravida-plasma-thalassemia      sample descriptions     -28/N   -28/N   CD41-42/N
 
-#### Format of panel config file:
+#### Format of panel config file (-pc flag):
 
 Col|Name|Description
 :-:|:---|:---------
@@ -78,7 +78,7 @@ Col|Name|Description
 
 
 
-#### Format of panel config file:
+#### Format of barcode config file (-bc flag):
 
 Col	|Description
 :-:	|:----------
