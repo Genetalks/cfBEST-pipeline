@@ -45,7 +45,7 @@ GetOptions(
 				"mismatch_bar2:s"=>\$mismatch_bar2,
 				"step:s"=>\$step,
 				"only:s"=>\$only,
-				"od:s"=>\$outdir,
+				"outdir:s"=>\$outdir,
 				"mdepth_snp:s"=>\$min_depth_snp,
 				"msize:i"=>\$max_size,
 				) or &USAGE;
@@ -233,7 +233,7 @@ sub detect {#
 	my ($adc, $fdata_config, $indir, $outdir, $step) = @_;
 	open (SH, ">$outdir/detect.sh") or die $!;
 	foreach my $sample (keys %{$adc}) {
-		my $cmd = "perl $Bin/cfBest_pipeline_single.pl -i $fdata_config -ir $ref -ip $fpanel -ib $fbarcode -cid $configID -s $sample -indir $indir -min_depth $min_depth -min_CV $min_CV -mismatch_bar1 $mismatch_bar1 -mismatch_bar2 $mismatch_bar2 -threads $threads -step $step -od $outdir/ -distance $max_size";
+		my $cmd = "perl $Bin/cfBEST_pipeline_single.pl -i $fdata_config -ir $ref -ip $fpanel -ib $fbarcode -cid $configID -s $sample -indir $indir -min_depth $min_depth -min_CV $min_CV -mismatch_bar1 $mismatch_bar1 -mismatch_bar2 $mismatch_bar2 -threads $threads -step $step -od $outdir/ -distance $max_size";
 		if (defined $SingleEnd) {
 			$cmd .= " --SingleEnd -secBar_len $secBar_len";
 		}
