@@ -14,7 +14,7 @@ my $version="2.0.0";
 # ------------------------------------------------------------------
 # GetOptions
 # ------------------------------------------------------------------
-my ($fdata_sheet,$indir, $num_parallel, $threads, $outdir, $only);
+my ($fsample_sheet,$indir, $num_parallel, $threads, $outdir, $only);
 my ($min_CV, $min_depth, $flexbar);
 my ($Abnormal_Recognize,$Double_Barcode);
 my ($SingleEnd, $step);
@@ -27,11 +27,11 @@ my $fpanel = "$Bin/config/panel.config";
 my $fbarcode = "$Bin/config/barcode.config";
 GetOptions(
 				"help|?" =>\&USAGE,
-				"i:s"=>\$fdata_sheet,
-				"ip:s"=>\$fpanel,
-				"ib:s"=>\$fbarcode,
-				"ir:s"=>\$ref,
-				"cid:s"=>\$configID,
+				"ss:s"=>\$fsample_sheet,
+				"pc:s"=>\$fpanel,
+				"bc:s"=>\$fbarcode,
+				"ref:s"=>\$ref,
+				"id:s"=>\$configID,
 				"indir:s"=>\$indir,
 				"SingleEnd:s"=>\$SingleEnd,
 				"Abnormal_Recognize:s"=>\$Abnormal_Recognize,
@@ -49,11 +49,11 @@ GetOptions(
 				"mdepth_snp:s"=>\$min_depth_snp,
 				"msize:i"=>\$max_size,
 				) or &USAGE;
-&USAGE unless ($fdata_sheet and $ref and $indir);
+&USAGE unless ($fsample_sheet and $ref and $indir);
 $outdir||="./";
 `mkdir $outdir`	unless (-d $outdir);
 $outdir=AbsolutePath("dir",$outdir);
-$fdata_sheet=AbsolutePath("file", $fdata_sheet);
+$fsample_sheet=AbsolutePath("file", $fsample_sheet);
 
 $num_parallel = defined $num_parallel? $num_parallel: 4;
 $min_CV = defined $min_CV? $min_CV: 0.65;
@@ -82,7 +82,7 @@ open ($sh,">$outdir/work.sh") or die $!;
 # read data config
 #==================================================================
 my %data_config;
-&read_data_sheet($fdata_sheet, $fpanel, \%data_config, $configID);
+&read_data_sheet($fsample_sheet, $fpanel, \%data_config, $configID);
 &output_sample_description(\%data_config, $dir_statistic);  ## out sample description
 
 #==================================================================
@@ -92,7 +92,7 @@ my $dir_call = "$outdir/00.call_data";
 if($step ==0){
 	if(defined $Double_Barcode){
 		`mkdir $dir_call` unless (-d $dir_call);
-	 	&Run("$Bin/ctBest/ctbest demulex -i $indir -s $fdata_sheet -o $dir_call -2 -l 7 -b 7", $sh);
+	 	&Run("$Bin/ctBest/ctbest demulex -i $indir -s $fsample_sheet -o $dir_call -2 -l 7 -b 7", $sh);
 	}
 	$step++;
 }
@@ -102,8 +102,8 @@ if($step ==0){
 # detect 
 #==================================================================
 if ($step <=5) {
-	&detect(\%data_config, $fdata_sheet, $indir, $outdir, $step);
-	&Run("perl $Bin/get_hotspot_detect.pl -id $outdir/05.variant_detect/variants/ -is $fdata_sheet -ic $fpanel -cid $configID  -k Total -od $dir_statistic", $sh);
+	&detect(\%data_config, $fsample_sheet, $indir, $outdir, $step);
+	&Run("perl $Bin/get_hotspot_detect.pl -id $outdir/05.variant_detect/variants/ -is $fsample_sheet -ic $fpanel -cid $configID  -k Total -od $dir_statistic", $sh);
 	print "\nDetect Done: ",GetTime(),"\n";
 	$step = 6;
 }
@@ -114,7 +114,7 @@ if ($step <=5) {
 if ($step == 6){
 	my $dir_genotype = "$outdir/06.genotyping";
 	`mkdir $dir_genotype` unless (-d $dir_genotype);
-	&Run("perl $Bin/tma_genotyping/cffdna_estimation_and_fetal_genotyping.pl -i $fdata_sheet -ic $fpanel -cid $configID -id $outdir/statistic/05.hotspots_result/ -k Total -od $dir_genotype -e -d $min_depth_snp", $sh);
+	&Run("perl $Bin/tma_genotyping/cffdna_estimation_and_fetal_genotyping.pl -i $fsample_sheet -ic $fpanel -cid $configID -id $outdir/statistic/05.hotspots_result/ -k Total -od $dir_genotype -e -d $min_depth_snp", $sh);
 	$step ++;
 }
 
@@ -279,12 +279,13 @@ Contact:zeng huaping<huaping.zeng\@genetalks.com>
 
 Usage:
   Options:
-  -i        <file>    Input data sheet file(separate by tab), forced
-  -ir       <file>    Input ref genome file, forced
-  -ip       <file>    Input panel config file, [$fpanel]
-  -ib       <file>    Input barcode config file, [$fbarcode]
-  -cid      <str>	  config ID in panel config file needed when no configID in data_sheet file, optional
+  -ss       <file>    Input sample sheet file, forced
+  -pc       <file>    Input panel config file, [$fpanel]
+  -bc       <file>    Input barcode config file, [$fbarcode]
+  -ref      <file>    Input ref genome file, forced
+  -id       <str>     config ID in panel config file needed when no configID in data_sheet file, optional
   -indir    <dir>     rawdata dir, "Undetermined_*_001.fastq.gz", or "L1/*.R1.fastq.gz"
+  -outdir   <dir>     outdir of output file, default ./
   --SingleEnd         SingleEnd, read2 as second barcode, optinal
   --Double_Barcode    Double barcode, optinal
   --Abnormal_Recognize   abnormal sample recognize
@@ -308,7 +309,6 @@ Usage:
 	6: genotyping
 	7: merge statistic and abnormal sample recognize
 
-  -od <dir>    outdir of output file, default ./
   -h         Help
 
 USAGE
