@@ -22,7 +22,7 @@ my ($secBar_len, $mismatch_bar1, $mismatch_bar2);
 my $max_size=2000;
 my $min_depth_snp = 100;
 my $configID = "xxx";
-my $ref;
+my $ref = "$Bin/config/hg19.fasta";
 my $fpanel = "$Bin/config/panel.config";
 my $fbarcode = "$Bin/config/barcode.config";
 GetOptions(
@@ -49,7 +49,7 @@ GetOptions(
 				"mdepth_snp:s"=>\$min_depth_snp,
 				"msize:i"=>\$max_size,
 				) or &USAGE;
-&USAGE unless ($fsample_sheet and $ref and $indir);
+&USAGE unless ($fsample_sheet and $indir);
 $outdir||="./";
 `mkdir $outdir`	unless (-d $outdir);
 $outdir=AbsolutePath("dir",$outdir);
@@ -282,7 +282,7 @@ Usage:
   -ss       <file>    Input sample sheet file, forced
   -pc       <file>    Input panel config file, [$fpanel]
   -bc       <file>    Input barcode config file, [$fbarcode]
-  -ref      <file>    Input ref genome file, forced
+  -ref      <file>    Input ref genome file, [$ref]
   -id       <str>     config ID in panel config file needed when no configID in data_sheet file, optional
   -indir    <dir>     rawdata dir, "Undetermined_*_001.fastq.gz", or "L1/*.R1.fastq.gz"
   -outdir   <dir>     outdir of output file, default ./
