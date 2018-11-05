@@ -1,0 +1,20 @@
+
+NOTICE: Running with system command <convert2annovar.pl -includeinfo -allsample -withfreq -format vcf4 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo_variant.vcf > /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo.avinput>
+NOTICE: Finished reading 237 lines from VCF file
+NOTICE: A total of 187 locus in VCF file passed QC threshold, representing 178 SNPs (132 transitions and 46 transversions) and 9 indels/substitutions
+NOTICE: Finished writing allele frequencies based on 178 SNP genotypes (132 transitions and 46 transversions) and 9 indels/substitutions for 1 samples
+
+NOTICE: Running with system command </data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/third_party/annovar/table_annovar.pl /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo.avinput /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/annovar_db/ -buildver hg19 -outfile /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo -remove -protocol variant_target -operation f -nastring . --otherinfo -otherinfo>
+-----------------------------------------------------------------
+NOTICE: Processing operation=f protocol=variant_target
+
+NOTICE: Running system command <annotate_variation.pl -filter -dbtype variant_target -buildver hg19 -outfile /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo.avinput /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/annovar_db/>
+NOTICE: the --dbtype variant_target is assumed to be in generic ANNOVAR database format
+NOTICE: Variants matching filtering criteria are written to /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo.hg19_variant_target_dropped, other variants are written to /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo.hg19_variant_target_filtered
+NOTICE: Processing next batch with 187 unique variants in 187 input lines
+NOTICE: Scanning filter database /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/annovar_db/hg19_variant_target.txt...Done
+-----------------------------------------------------------------
+NOTICE: Multianno output file is written to /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo.hg19_multianno.txt
+NOTICE: Reading from /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo.hg19_multianno.txt
+-----------------------------------------------------------------
+NOTICE: VCF output is written to /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo.hg19_multianno.vcf

@@ -1,0 +1,2 @@
+Sample	MutID	MutTotal	DepTotal	FreqTotal	fetal.EM	MaternalGenotype	FetalGenotype	Refined.genotype.EM	p	AverDepth	AverDepthHotspot	Check	FetalGiving	MotherGiving	FatherGiving	TrueOrFalse	Ratio_E	Genotype_E
+demo	'-28	711	1441	0.493407356002776	0.136286201022147	'-28/N	'-28/N	ABab	0.999981592027676	246	1367	LowDep	'-28/N	'-28/N	CD41-42/N	TP	0.5	ABab

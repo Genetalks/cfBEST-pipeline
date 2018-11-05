@@ -217,9 +217,9 @@ sub get_variant_vcf{
 		my @primer = split /,/, $primers;
 		foreach my $id(keys %{$target{$c}{$s}}){
 			foreach my $p (@primer){
-				if($p=~/-U-/){
+				if($p=~/-F2/ || $p=~/-U-/){
 					$primer_spe{$id}{"U"}{$p}=1;
-				}elsif($p=~/-D-/){
+				}elsif($p=~/-R2/ || $p=~/-D-/){
 					$primer_spe{$id}{"D"}{$p}=1;
 				}
 			}

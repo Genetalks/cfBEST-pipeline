@@ -1,0 +1,2 @@
+SampleID	TotalPair	Mapratio	SEratio	ProperRatio	SoftClipRatio	DiffChrRatio	LowQualityRatio	OffTargetRatio	PosErrorRatio	InsertSize	SD
+demo	303465	99.98%	0.29%	98.59%	4.42%	1.11%	1.32%	12.54%	0.63%	124.08	75.21	

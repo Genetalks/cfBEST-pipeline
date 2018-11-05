@@ -1,0 +1,2 @@
+SampleID	TotalReads	NoPrimerReads	PrimaryPrimerReads	PrimaryPrimerRatio	SecondaryPrimerReads	SecondaryPrimerRatio	PrimerRatio
+demo	471212	143566	303465	64.40%	24181	5.13%	69.53%

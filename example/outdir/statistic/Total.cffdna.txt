@@ -1,0 +1,2 @@
+Sample	SNPNum	AverDepth	AverDepthHotspot	%cffdna_EM
+demo	70	246	1367	0.136286201022147

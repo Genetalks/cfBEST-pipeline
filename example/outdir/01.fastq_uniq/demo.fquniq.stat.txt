@@ -1,0 +1,2 @@
+TotalReads	UniqReads	UniqRatio	MaxFreq
+500000	242614	48.52%	159

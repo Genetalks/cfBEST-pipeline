@@ -1,0 +1,2 @@
+Total_unique	Total_reads	DiffChr_unique	DiffChr_unique_ratio(%)	DiffChr_reads	DiffChr_reads_ratio(%)	Large_distance_unique	Large_distance_unique_ratio(%)	Large_distance_reads	Large_distance_reads_ratio(%)
+17428	168359	43	0.25	237	0.14	2	0.01	6	0.00

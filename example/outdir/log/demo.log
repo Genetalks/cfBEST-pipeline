@@ -1,0 +1,90 @@
+/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/cfbest fquniq -1 .//demo.R1.fastq.gz -2 .//demo.R2.fastq.gz -o /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/01.fastq_uniq/demo -C
+unique reads: 242614 / 500000 = 48.52%
+[M::print_time] >build seq hash finished in 3.260 CPU sec, 3.259 real sec
+[M::print_time] >output finished in 1.396 CPU sec, 1.396 real sec
+Virtual memory Peak: 0.22 Gb, Virtual memory Size: 0.22 Gb
+
+Step1 elapsed time : 5s
+/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/cfbest detbar -1 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/01.fastq_uniq/demo.uniq.R1.fastq -2 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/01.fastq_uniq/demo.uniq.R2.fastq -b config/barcode.config -g B6,B7,B8 -o /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/02.barcode_process/demo
+[M::print_time] >Barcode recognition finished in 0.936 CPU sec, 0.936 real sec
+/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/cfbest ctrim -1 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/02.barcode_process/demo.corbar.R1.fastq -2 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/02.barcode_process/demo.corbar.R2.fastq -o /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/02.barcode_process/demo
+[M::print_time] >Trim consensus finished in 17.216 CPU sec, 17.218 real sec
+
+Step2 elapsed time : 18s
+/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/cfbest detprim -1 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/02.barcode_process/demo.clean.R1.fastq -2 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/02.barcode_process/demo.clean.R2.fastq -p /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/config/./AB-10.primer.info -o /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/03.data_process/demo 
+[M::print_time] >primer recognition finished in 1.152 CPU sec, 1.154 real sec
+
+Step3 elapsed time : 1s
+/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/third_party/bwa mem -Y -C -t 10 /data/bioit/biodata/duyp/bin/hg19/hg19.fasta /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/03.data_process/demo.hasPrimer.R1.fastq /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/03.data_process/demo.hasPrimer.R2.fastq | /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/cfbest filter -k /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/04.consensus_make/demo -SLTP -t /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/config/./AB-10.primer.bed -p /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/config/./AB-10.primer.info | /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/cfbest dedup -s demo -o /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/04.consensus_make -t 10 -d 3 -c 0.65 -N 2 -m 1 -M 1
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+[M::process] read 270978 sequences (19038679 bp)...
+[M::mem_pestat] # candidate unique pairs for (FF, FR, RF, RR): (1, 112895, 6, 1)
+[M::mem_pestat] skip orientation FF as there are not enough pairs
+[M::mem_pestat] analyzing insert size distribution for orientation FR...
+[M::mem_pestat] (25, 50, 75) percentile: (77, 117, 161)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 329)
+[M::mem_pestat] mean and std.dev: (124.35, 65.60)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 413)
+[M::mem_pestat] skip orientation RF as there are not enough pairs
+[M::mem_pestat] skip orientation RR as there are not enough pairs
+[M::mem_process_seqs] Processed 270978 reads in 37.088 CPU sec, 4.553 real sec
+[main] Version: 0.7.15-r1140
+[main] CMD: /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/third_party/bwa mem -Y -C -t 10 /data/bioit/biodata/duyp/bin/hg19/hg19.fasta /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/03.data_process/demo.hasPrimer.R1.fastq /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/03.data_process/demo.hasPrimer.R2.fastq
+[main] Real time: 9.931 sec; CPU: 41.336 sec
+[M::print_time] >build catalog finished in 1.000 CPU sec, 9.932 real sec
+[M::print_time] >mapping efficiency statistic and mapping result filtering finished in 1.192 CPU sec, 9.920 real sec
+[M::print_time] >clustering barcode finished in 0.188 CPU sec, 0.041 real sec
+[M::print_time] >assign id finished in 0.068 CPU sec, 0.020 real sec
+[M::print_time] >call consensus finished in 2.320 CPU sec, 0.684 real sec
+[M::print_time] >duplication stat finished in 0.016 CPU sec, 0.015 real sec
+[M::print_time] >write result finished in 0.112 CPU sec, 0.115 real sec
+Virtual memory Peak: 0.86 Gb, Virtual memory Size: 0.81 Gb
+perl /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/consensus_filter.pl -fq1 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/04.consensus_make/demo.consensus.R1.fastq -fq2 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/04.consensus_make/demo.consensus.R2.fastq -k demo -od /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/04.consensus_make -distance 2000
+/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/cfbest cstat -1 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/04.consensus_make/demo.consensus.final.R1.fastq -p /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/config/./AB-10.primer.info -o /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/04.consensus_make/demo
+[M::print_time] >stat consensus finished in 0.088 CPU sec, 0.087 real sec
+
+Step4 elapsed time : 12s
+/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/third_party/bwa mem -C -Y -R '@RG\tID:demo\tPL:ILLUMINA\tSM:demo\tDS:ref=hg19,pfx=/data/bioit/biodata/duyp/bin/hg19/hg19.fasta' -t 10 /data/bioit/biodata/duyp/bin/hg19/hg19.fasta /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/04.consensus_make/demo.consensus.final.R1.fastq /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/04.consensus_make/demo.consensus.final.R2.fastq | /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/third_party/samtools view -bS - |/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/third_party/samtools sort - -o /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/demo.sorted.bam
+[M::bwa_idx_load_from_disk] read 0 ALT contigs
+[M::process] read 34766 sequences (2440400 bp)...
+[M::mem_pestat] # candidate unique pairs for (FF, FR, RF, RR): (0, 14403, 0, 0)
+[M::mem_pestat] skip orientation FF as there are not enough pairs
+[M::mem_pestat] analyzing insert size distribution for orientation FR...
+[M::mem_pestat] (25, 50, 75) percentile: (76, 113, 154)
+[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 310)
+[M::mem_pestat] mean and std.dev: (118.33, 58.12)
+[M::mem_pestat] low and high boundaries for proper pairs: (1, 388)
+[M::mem_pestat] skip orientation RF as there are not enough pairs
+[M::mem_pestat] skip orientation RR as there are not enough pairs
+[M::mem_process_seqs] Processed 34766 reads in 2.840 CPU sec, 0.337 real sec
+[main] Version: 0.7.15-r1140
+[main] CMD: /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/third_party/bwa mem -C -Y -R @RG\tID:demo\tPL:ILLUMINA\tSM:demo\tDS:ref=hg19,pfx=/data/bioit/biodata/duyp/bin/hg19/hg19.fasta -t 10 /data/bioit/biodata/duyp/bin/hg19/hg19.fasta /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/04.consensus_make/demo.consensus.final.R1.fastq /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/04.consensus_make/demo.consensus.final.R2.fastq
+[main] Real time: 4.521 sec; CPU: 6.652 sec
+/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/third_party/samtools index /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/demo.sorted.bam
+ln -s /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/config/./AB-10.primer.bed /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/demo.target.bed
+perl /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/hotspot.stat.pl -i1 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/demo.sorted.bam -i2 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/config/./AB-10.target.txt -i3 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/config/ -k demo -od /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/QC/
+
+Done. Total elapsed time : 2s
+/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/variant/realign_indel -i /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/demo.sorted.bam -r /data/bioit/biodata/duyp/bin/hg19/hg19.fasta -o /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/demo.realign.bam
+/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/demo.sorted.bam
+start:	[2018-11-05 11:07:08]
+end:	[2018-11-05 11:07:10]
+/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/variant/call_snp -i /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/demo.realign.bam  -g /data/bioit/biodata/duyp/bin/hg19/hg19.fasta -rp /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/config/./AB-10.region.primer -o /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo.vcf
+Reading:	[2018-11-05 11:07:11]
+Counting:	[2018-11-05 11:07:17]
+printing::	[2018-11-05 11:07:18]
+
+Done. Total elapsed time : 9s
+Ending:	[2018-11-05 11:07:20]
+less /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo.vcf|awk '$5!="<*>"'|sed 's/,<\*>//'|less >/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo_variant.vcf
+perl /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/third_party/annovar/table_annovar.pl /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo_variant.vcf /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/annovar_db/ -buildver hg19 -out /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo -remove -protocol variant_target -operation f -nastring . -vcfinput --otherinfo >/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo.annovar.log 2>&1
+perl /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/variant/annovar_result_simplify_convert.pl --thalassemia -i1 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//demo.hg19_multianno.txt -i2 /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/config/./AB-10.target.txt -s demo -od /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants//
+
+Done. Total elapsed time : 0s
+/data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/variant/fusion_detect -i /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/demo.sorted.bam -k demo -od /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/variants/
+
+Done. Total elapsed time : 1s
+
+Step5 elapsed time : 20s
+
+Done. Total elapsed time : 56s

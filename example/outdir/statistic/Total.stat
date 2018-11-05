@@ -1,0 +1,2 @@
+Sample	TotalReads	UniqRatio	BarErrorRatio	PrimerRatio	PrimerReads	SoftClipRatio	LowQualityRatio	OffTargetRatio	PosErrorRatio	InsertSize	SEratio	LowDepth	ConsensError	TotalUniq	TotalUniq/TotalReads	DupRatio	RemainRatio	AverDepth	VarTotal	VarPass	Description
+demo	500000	48.52%	5.76%	64.40%	303465	4.42%	1.32%	12.54%	0.63%	124.08	0.00%	34.84%	0.71%	17383	3.48%	89.66%	277.83	CTTCGTT	No

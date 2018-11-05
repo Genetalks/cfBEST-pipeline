@@ -103,7 +103,6 @@ if($step ==0){
 #==================================================================
 if ($step <=5) {
 	&detect(\%data_config, $fsample_sheet, $indir, $outdir, $step);
-	&Run("perl $Bin/get_hotspot_detect.pl -id $outdir/05.variant_detect/variants/ -is $fsample_sheet -ic $fpanel -cid $configID  -k Total -od $dir_statistic", $sh);
 	print "\nDetect Done: ",GetTime(),"\n";
 	$step = 6;
 }
@@ -112,6 +111,7 @@ if ($step <=5) {
 # get hotspot result; genotyping
 #==================================================================
 if ($step == 6){
+	&Run("perl $Bin/get_hotspot_detect.pl -id $outdir/05.variant_detect/variants/ -is $fsample_sheet -ic $fpanel -cid $configID  -k Total -od $dir_statistic", $sh);
 	my $dir_genotype = "$outdir/06.genotyping";
 	`mkdir $dir_genotype` unless (-d $dir_genotype);
 	&Run("perl $Bin/tma_genotyping/cffdna_estimation_and_fetal_genotyping.pl -i $fsample_sheet -ic $fpanel -cid $configID -id $outdir/statistic/05.hotspots_result/ -k Total -od $dir_genotype -e -d $min_depth_snp", $sh);

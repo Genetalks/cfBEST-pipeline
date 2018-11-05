@@ -1,0 +1,1 @@
+nohup perl ../cfBEST_pipeline.pl -ss demo.config -pc config/panel.config -bc config/barcode.config -ref /data/bioit/biodata/duyp/bin/hg19/hg19.fasta -id AB-10 -indir ./ -outdir outdir/ -min_depth 3 -threads 10 -mdepth_snp 50 &

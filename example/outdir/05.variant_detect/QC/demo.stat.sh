@@ -1,0 +1,1 @@
+perl /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/depth.stat.pl -i /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/demo.sorted.bam -o /data/bioit/biodata/zenghp/bin/ctDNA_dev/cfBEST/cfBEST-pipeline/example/outdir/05.variant_detect/QC/demo.depth

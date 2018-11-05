@@ -1,0 +1,2 @@
+TotalReads	TotalUniq	PosUniq	BarUniq	Duplicate	DupRatio	SEratio	LowDepth	ConsensError	Normal
+261200	92585	36087	56498	168615	64.55%	0.00%	34.84%	0.71%	64.46%	

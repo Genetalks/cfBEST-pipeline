@@ -1,0 +1,56 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+>>> The 1th iteration 
+=== params. estimation ===
+Prop. of different genetypes: pi = (0.5,0.09,0.27,0.14)
+Mean estimation of B allele freq.: u = (0,0.07,0.43,0.5)
+log likelihood: -176.30
+estimated fetal DNA fraction: 0.136286
+
+>>> The 2th iteration 
+=== params. estimation ===
+Prop. of different genetypes: pi = (0.5,0.09,0.3,0.11)
+Mean estimation of B allele freq.: u = (0,0.07,0.43,0.5)
+log likelihood: -176.13
+estimated fetal DNA fraction: 0.136286
+
+>>> The 3th iteration 
+=== params. estimation ===
+Prop. of different genetypes: pi = (0.5,0.09,0.34,0.07)
+Mean estimation of B allele freq.: u = (0,0.07,0.44,0.5)
+log likelihood: -175.99
+estimated fetal DNA fraction: 0.136286
+
+>>> The 4th iteration 
+=== params. estimation ===
+Prop. of different genetypes: pi = (0.5,0.09,0.4,0.01)
+Mean estimation of B allele freq.: u = (0,0.07,0.45,0.49)
+log likelihood: -176.75
+estimated fetal DNA fraction: 0.136286
+
+Loading required package: ggplot2
+null device 
+          1 
+
+#### infer genotypes using deduced fetal dna fration and experimental pii
+Warning message:
+In regenotype_SNV_mutation_in_CNV_region(df, theta$f, opt$annocol) :
+  the number of given loci is not 1!
+
+Warning message:
+In regenotype_SNV_mutation_in_CNV_region(df, theta$f,  ... :
+  the number of given loci is not 1!
+
+f:-28/N M:-28/N F:CD41-42/N
+TP:	M:-28/N	f:-28/N	0.5	ABab	M:-28/N	f:-28/N	F:CD41-42/N		-28
+
+Done. Total elapsed time : 0s

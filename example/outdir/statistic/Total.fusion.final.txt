@@ -1,0 +1,1 @@
+SampleID	Break1	Break2	Support1	Support2	Depth1	Depth2	FusionSeq1	FusionSeq2
